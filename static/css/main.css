@@ -58,6 +58,13 @@ h1 a {
   color: #76b7e4;
 }
 
+h2 {
+  font-weight: 700;
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  color: #0881b3;
+}
+
 h3 {
   font-weight: 700;
   font-size: 1.1em;
@@ -67,6 +74,28 @@ h3 small {
   color: #bebebe;
   font-weight: 400;
   font-size: 17px;
+}
+
+p.load-more {
+  text-align: center;
+  padding: 1em 0;
+}
+
+a.button {
+  border-radius: 4px;
+  background-color: #76b7e4;
+  color: #fff;
+  padding: 8px 12px;
+  font-weight: 700;
+  }
+a.button:hover {
+  text-decoration: none;
+  background-color: #0881b3;
+}
+a.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .65;
 }
 
 body > main,

@@ -19,6 +19,8 @@
     <main>
       <h1><a href="/">Road Trip dans l'Ouest Americain</a></h1>
 
+      <h2>Circuit</h2>
+
       <h3>San Francisco <small>02/05 - 06/05</small></h3>
       <ul>
         <li>Jour 1 - Golden Gate Park, Lincoln Park, China Beach, Presidio</li>
@@ -55,6 +57,11 @@
         <li>Jour 2 - Carmel, Monterey, Salinas</li>
       </ul>
 
+      <h2>Photos</h2>
+      <div id="instafeed"></div>
+      <p class="load-more">
+        <a class="button" id="load-more" href="#/" onclick="click">Plus de photos</a>
+      </p>
     </main>
 
     <footer>
@@ -62,6 +69,39 @@
     </footer>
 
     <script src="/static/js/map.js"></script>
+    <script type="text/javascript" src="/static/js/instafeed.min.js"></script>
+    <script type="text/javascript">
+    var loadButton = document.getElementById('load-more');
+      var userFeed = new Instafeed({
+          get: 'user',
+          userId: 581392,
+          accessToken: '581392.467ede5.aab0a7be2daa42a88f3c885830decf6f',
+          error: function(error) {
+            console.log('instafeed: ', error);
+          },
+          filter: function(image) {
+            return image.tags.indexOf('roadtrip') >= 0;
+          },
+          // every time we load more, run this function
+          after: function() {
+            // disable button if no more results to load
+            if (!this.hasNext()) {
+              console.log('no more');
+              loadButton.className = 'button disabled';
+            } else {
+              console.log('more photos');
+            }
+          },
+      });
+
+      // bind the load more button
+      loadButton.addEventListener('click', function() {
+        userFeed.next();
+      });
+
+      // run our feed!
+      userFeed.run();
+    </script>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES * * */
         var disqus_shortname = 'roadtripouestamericain';
