@@ -63,6 +63,11 @@ h3 {
   font-size: 1.1em;
   margin-bottom: 0.5em;
 }
+h3 small {
+  color: #d3d3d3;
+  font-weight: 400;
+  font-size: 1em;
+}
 
 body > main,
 body > footer {
